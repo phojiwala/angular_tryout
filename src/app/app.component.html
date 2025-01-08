@@ -1,0 +1,44 @@
+<nav class="navbar">
+  <a [class.active]="activeTab === 'posts'" (click)="showPosts()">Posts</a>
+  <a [class.active]="activeTab === 'users'" (click)="showUsers()">Users</a>
+</nav>
+
+<div class="container">
+  <!-- Posts View -->
+  <div *ngIf="activeTab === 'posts'">
+    <div *ngIf="!selectedPost">
+      <hlm-table class="w-full min-w-[400px]">
+        <hlm-caption>Posts List</hlm-caption>
+        <hlm-trow>
+          <hlm-th class="w-20">ID</hlm-th>
+          <hlm-th class="w-60">Title</hlm-th>
+          <hlm-th class="flex-1">Body</hlm-th>
+        </hlm-trow>
+
+        <hlm-trow *ngFor="let post of displayedPosts" (click)="showPost(post.id)">
+          <hlm-td class="w-20">{{ post.id }}</hlm-td>
+          <hlm-td class="w-60" truncate>{{ post.title }}</hlm-td>
+          <hlm-td class="flex-1" truncate>{{ post.body }}</hlm-td>
+        </hlm-trow>
+      </hlm-table>
+      <button *ngIf="displayedPosts.length < posts.length" (click)="loadMorePosts()" class="load-more-btn">
+        Load More
+      </button>
+    </div>
+
+    <div *ngIf="selectedPost" class="single-post">
+      <button (click)="back()" class="back-btn">← Back to Posts</button>
+      <h1>{{ selectedPost.title }}</h1>
+      <p>{{ selectedPost.body }}</p>
+    </div>
+  </div>
+
+  <!-- Users View -->
+  <div *ngIf="activeTab === 'users'" class="user-grid">
+    <div *ngFor="let user of users" class="user-card">
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+      <p>{{ user.company.name }}</p>
+    </div>
+  </div>
+</div>

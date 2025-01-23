@@ -7,24 +7,27 @@
   <!-- Posts View -->
   <div *ngIf="activeTab === 'posts'">
     <div *ngIf="!selectedPost">
-      <table class="w-full min-w-[400px]">
-        <caption>Posts List</caption>
-        <thead>
-          <tr>
-            <th class="w-20">ID</th>
-            <th class="w-60">Title</th>
-            <th class="flex-1">Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let post of displayedPosts" (click)="showPost(post.id)" class="cursor-pointer">
-            <td class="w-20">{{ post.id }}</td>
-            <td class="w-60 truncate">{{ post.title }}</td>
-            <td class="flex-1 truncate">{{ post.body }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button *ngIf="displayedPosts.length < posts.length" (click)="loadMorePosts()" class="load-more-btn">
+      <div class="overflow-x-auto">
+        <h1 class="text-4xl font-bold mb-4">Posts</h1>
+        <table class="table table-zebra w-full min-w-[400px]">
+          <thead>
+            <tr>
+              <th class="w-20">ID</th>
+              <th class="w-60">Title</th>
+              <th class="flex-1">Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of displayedPosts" (click)="showPost(post.id)" class="cursor-pointer">
+              <td class="w-20">{{ post.id }}</td>
+              <td class="">{{ post.title }}</td>
+              <td class="flex-1 truncate">{{ post.body }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-secondary mt-4 flex justify-center mx-auto" *ngIf="displayedPosts.length < posts.length"
+        (click)="loadMorePosts()">
         Load More
       </button>
     </div>

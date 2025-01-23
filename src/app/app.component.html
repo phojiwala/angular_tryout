@@ -7,20 +7,23 @@
   <!-- Posts View -->
   <div *ngIf="activeTab === 'posts'">
     <div *ngIf="!selectedPost">
-      <hlm-table class="w-full min-w-[400px]">
-        <hlm-caption>Posts List</hlm-caption>
-        <hlm-trow>
-          <hlm-th class="w-20">ID</hlm-th>
-          <hlm-th class="w-60">Title</hlm-th>
-          <hlm-th class="flex-1">Body</hlm-th>
-        </hlm-trow>
-
-        <hlm-trow *ngFor="let post of displayedPosts" (click)="showPost(post.id)">
-          <hlm-td class="w-20">{{ post.id }}</hlm-td>
-          <hlm-td class="w-60" truncate>{{ post.title }}</hlm-td>
-          <hlm-td class="flex-1" truncate>{{ post.body }}</hlm-td>
-        </hlm-trow>
-      </hlm-table>
+      <table class="w-full min-w-[400px]">
+        <caption>Posts List</caption>
+        <thead>
+          <tr>
+            <th class="w-20">ID</th>
+            <th class="w-60">Title</th>
+            <th class="flex-1">Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of displayedPosts" (click)="showPost(post.id)" class="cursor-pointer">
+            <td class="w-20">{{ post.id }}</td>
+            <td class="w-60 truncate">{{ post.title }}</td>
+            <td class="flex-1 truncate">{{ post.body }}</td>
+          </tr>
+        </tbody>
+      </table>
       <button *ngIf="displayedPosts.length < posts.length" (click)="loadMorePosts()" class="load-more-btn">
         Load More
       </button>

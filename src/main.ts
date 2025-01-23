@@ -6,24 +6,12 @@ import { Post } from './app/post.interface';
 import { User } from './app/user.interface';
 import { PostService } from './app/post.service';
 import { UserService } from './app/user.service';
-import {
-  HlmCaptionComponent,
-  HlmTableComponent,
-  HlmTdComponent,
-  HlmThComponent,
-  HlmTrowComponent,
-} from '@spartan-ng/ui-table-helm';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
-    HlmTableComponent,
-    HlmTrowComponent,
-    HlmThComponent,
-    HlmTdComponent,
-    HlmCaptionComponent
+    CommonModule
   ],
   templateUrl: 'app/app.component.html',
 })

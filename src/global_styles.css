@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Unknown', monospace !important;
+  font-family: 'Unknown', monospace;
 }
 
 h1,
@@ -28,7 +28,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Noto_Sans_Jp', monospace !important;
+  font-family: 'Noto_Sans_Jp', monospace;
 }
 
 .posts-table {
@@ -162,10 +162,4 @@ h6 {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  background-color: #f5f6fa;
-  margin: 0;
-  font-family: Arial, sans-serif;
 }

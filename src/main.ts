@@ -21,6 +21,10 @@ export class App implements OnInit {
   selectedPost: Post | null = null;
   activeTab: 'posts' | 'users' = 'posts';
   displayedPosts: Post[] = [];
+  navLinks: { label: string; href: string }[] = [
+    { label: 'Posts', href: '#posts' },
+    { label: 'Users', href: '#users' }
+  ];
   postsPerPage = 10;
   currentPage = 1;
 

@@ -7,11 +7,8 @@
         </svg>
       </div>
       <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/posts" routerLinkActive="active">Posts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <li *ngFor="let link of links">
+          <a class="nav-link" [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
         </li>
       </ul>
     </div>
@@ -19,11 +16,8 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li class="nav-item">
-        <a routerLink="/posts" routerLinkActive="active">Posts</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/users" routerLinkActive="active">Users</a>
+      <li *ngFor="let link of links">
+        <a [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
       </li>
     </ul>
   </div>

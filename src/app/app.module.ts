@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { routes } from './app.routes';
+import { routerConfig } from './app.routes';
 import { PostService } from './posts/post.service';
 import { PostsComponent } from './posts/posts.component';
 import { UserService } from './users/user.service';
@@ -16,7 +16,7 @@ import { UsersComponent } from './users/users.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routerConfig)
   ],
   providers: [PostService, UserService],
   bootstrap: [AppComponent]

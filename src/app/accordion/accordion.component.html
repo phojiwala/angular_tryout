@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-4">
+    <div class="collapse collapse-arrow bg-base-200" [class]="bgColor" *ngFor="let item of items; let i = index">
+        <input type="radio" [name]="name" [checked]="item.isOpen" />
+        <div class="collapse-title text-xl font-medium">{{ item.title }}</div>
+        <div class="collapse-content">
+            <ng-container *ngIf="item.content">{{ item.content }}</ng-container>
+            <ng-container *ngIf="item.template">
+                <ng-container *ngTemplateOutlet="item.template"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>

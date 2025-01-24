@@ -75,19 +75,7 @@ h6 {
   background: #3498db;
   padding: 1rem 2rem;
   margin-bottom: 2rem;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin-right: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.navbar a.active {
-  background: #2980b9;
-  border-radius: 4px;
+  z-index: 999999999;
 }
 
 .container {

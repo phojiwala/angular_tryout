@@ -1,1 +1,43 @@
-<p>chat works!</p>
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col items-center justify-center">
+        <!-- Page content here -->
+        <div class="flex flex-col w-full h-full md:px-12 px-3 py-6">
+            <div class="p-4 bg-slate-500 h-[calc(100%-240px)] overflow-auto">
+                <messages></messages>
+            </div>
+            <div class="join w-full">
+                <input class="input input-bordered join-item w-full" placeholder="Search" />
+                <select class="select select-bordered join-item">
+                    <option disabled selected>Models</option>
+                    <option *ngFor="let model of models" [value]="model.value">{{model.name}}</option>
+                </select>
+                <div class="indicator">
+                    <button class="btn join-item">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="drawer-side">
+        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+        <div class="bg-slate-800/90 text-base-content min-h-full w-80 p-4">
+            <ng-template #promptsContent>
+                <ul class="menu bg-base-200 p-0">
+                    <li *ngFor="let prompt of prompts" (click)="selectPrompt(prompt)">
+                        <span>{{ prompt.name }}</span>
+                    </li>
+                </ul>
+            </ng-template>
+            <ng-template #recentChatsContent>
+                <ul class="menu bg-base-200 p-0">
+                    <li *ngFor="let chat of recentChats" (click)="openChat(chat)">
+                        <span>{{ chat.name }}</span>
+                    </li>
+                </ul>
+            </ng-template>
+
+            <accordion [items]="accordionItems" name="chats" bgColor="bg-base-100">
+            </accordion>
+        </div>
+    </div>
+</div>

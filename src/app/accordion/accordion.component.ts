@@ -1,10 +1,10 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface AccordionItem {
   title: string;
   content?: string;
-  template?: TemplateRef<any>;
+  template?: any;
   isOpen?: boolean;
 }
 
@@ -17,6 +17,6 @@ export interface AccordionItem {
 })
 export class AccordionComponent {
   @Input() items: AccordionItem[] = [];
-  @Input() name: string = 'accordion';
-  @Input() bgColor: string = 'bg-base-200';
+  @Input() name: string = '';
+  @Input() bgColor: string = '';
 }

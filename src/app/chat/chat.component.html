@@ -1,43 +1,46 @@
 <div class="drawer lg:drawer-open">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
-        <!-- Page content here -->
-        <div class="flex flex-col w-full h-full md:px-12 px-3 py-6">
-            <div class="p-4 bg-slate-500 h-[calc(100%-240px)] overflow-auto">
-                <messages></messages>
-            </div>
+        <div class="w-full p-4">
+            <app-messages></app-messages>
+            <br />
             <div class="join w-full">
-                <input class="input input-bordered join-item w-full" placeholder="Search" />
-                <select class="select select-bordered join-item">
-                    <option disabled selected>Models</option>
-                    <option *ngFor="let model of models" [value]="model.value">{{model.name}}</option>
+                <input class="input input-bordered join-item w-full" placeholder="Search" [(ngModel)]="searchQuery" />
+                <select class="select select-bordered join-item" [(ngModel)]="selectedModel">
+                    <option value="">Select Model</option>
+                    <option *ngFor="let model of models" [value]="model.value">
+                        {{model.name}}
+                    </option>
                 </select>
-                <div class="indicator">
-                    <button class="btn join-item">Search</button>
-                </div>
+                <button class="btn join-item" (click)="handleSearch()">Search</button>
             </div>
         </div>
+        <app-form></app-form>
     </div>
     <div class="drawer-side">
-        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <div class="bg-slate-800/90 text-base-content min-h-full w-80 p-4">
+        <label for="my-drawer-2" class="drawer-overlay"></label>
+        <div class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <accordion [items]="accordionItems" name="sidebar" bgColor="bg-base-200"></accordion>
+
             <ng-template #promptsContent>
-                <ul class="menu bg-base-200 p-0">
-                    <li *ngFor="let prompt of prompts" (click)="selectPrompt(prompt)">
-                        <span>{{ prompt.name }}</span>
-                    </li>
-                </ul>
-            </ng-template>
-            <ng-template #recentChatsContent>
-                <ul class="menu bg-base-200 p-0">
-                    <li *ngFor="let chat of recentChats" (click)="openChat(chat)">
-                        <span>{{ chat.name }}</span>
-                    </li>
-                </ul>
+                <div class="flex flex-col gap-2">
+                    <div *ngFor="let prompt of prompts" (click)="selectPrompt(prompt)"
+                        class="cursor-pointer hover:bg-base-300 p-2 rounded-lg">
+                        <h3 class="font-bold">{{prompt.name}}</h3>
+                        <p class="text-sm">{{prompt.text}}</p>
+                    </div>
+                </div>
             </ng-template>
 
-            <accordion [items]="accordionItems" name="chats" bgColor="bg-base-100">
-            </accordion>
+            <ng-template #recentChatsContent>
+                <div class="flex flex-col gap-2">
+                    <div *ngFor="let chat of recentChats" (click)="openChat(chat)"
+                        class="cursor-pointer hover:bg-base-300 p-2 rounded-lg">
+                        <h3 class="font-bold">{{chat.name}}</h3>
+                        <p class="text-sm">{{chat.lastMessage}}</p>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

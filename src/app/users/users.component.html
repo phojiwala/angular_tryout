@@ -1,9 +1,11 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-  <div class="card" *ngFor="let user of users">
-    <div class="card-body">
-      <h5 class="card-title">{{user.name}}</h5>
-      <p class="card-text">Email: {{user.email}}</p>
-      <p class="card-text">Phone: {{user.phone}}</p>
+<div class="container mx-auto p-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="glass card" *ngFor="let user of users">
+      <div class="card-body">
+        <h5 class="card-title">{{user.name}}</h5>
+        <p class="card-text">Email: {{user.email}}</p>
+        <p class="card-text">Phone: {{user.phone}}</p>
+      </div>
     </div>
   </div>
 </div>

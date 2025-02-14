@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Birthdate</th>
+          <th>Language</th>
+          <th>Has</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos">
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <td>
+            {{ todo.firstName }}
+          </td>
+          <td>
+            {{ todo.lastName }}
+          </td>
+          <td>{{ todo.date }}</td>
+          <td>{{ todo.lang }}</td>
+          <td>{{ getTrueKeys(todo).join(', ') }}</td>
+          <th class="space-x-2">
+            <button class="btn btn-primary btn-xs" (click)="editData(todo.id)">Edit</button>
+            <button class="btn btn-warning btn-xs" (click)="deleteTodo(todo.id)">Delete</button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <app-form [todoToEdit]="selectedTodo" (formSubmit)="addUpdateTodo($event)"></app-form>
+</div>

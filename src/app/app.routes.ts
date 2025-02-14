@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { ChatComponent } from './chat/chat.component';
+import { TodosComponent } from './todos/todos.component';
 
 interface RouteConfig {
   path: string;
@@ -10,17 +11,22 @@ interface RouteConfig {
 }
 
 const routes: RouteConfig[] = [
-  { 
+  {
     path: 'posts',
     component: PostsComponent,
     label: 'Posts'
   },
-  { 
+  {
     path: 'users',
     component: UsersComponent,
     label: 'Users'
   },
-  { 
+  {
+    path: 'todos',
+    component: TodosComponent,
+    label: 'Todos'
+  },
+  {
     path: 'chat',
     component: ChatComponent,
     label: 'Chat'

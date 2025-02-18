@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="grid grid-cols-4 gap-4">
+    <div class="card shadow-sm" *ngFor="let product of products">
+      <figure class="px-10 pt-10">
+        <img src="{{product.image}}" alt="Shoes" class="rounded-xl" />
+      </figure>
+      <div class="card-body items-center text-center">
+        <h2 class="card-title text-base">{{product.title}}</h2>
+        <b class="text-xl">₹{{product.price}}</b>
+        <div class="card-actions">
+          <button class="btn btn-primary" (click)="addToCart(product)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

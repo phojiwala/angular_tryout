@@ -1,9 +1,11 @@
 <form [formGroup]="form" class="space-y-4">
   <div class="grid grid-cols-2 gap-4">
-    <input class="input input-bordered w-full" formControlName="firstName" placeholder="First name" />
-    <span class="text-error text-xs" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
-      {{ getErrorMessage('firstName') }}
-    </span>
+    <div>
+      <input class="input input-bordered w-full" formControlName="firstName" placeholder="First name" />
+      <span class="text-error text-xs" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
+        {{ getErrorMessage('firstName') }}
+      </span>
+    </div>
     <input class="input input-bordered w-full" formControlName="lastName" placeholder="Last name" />
     <input type="date" class="input input-bordered w-full" formControlName="date" placeholder="Date" />
     <input type="file" class="file-input w-full" (change)="onFileChange($event)" placeholder="File" />

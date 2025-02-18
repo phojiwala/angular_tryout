@@ -3,6 +3,8 @@ import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { ChatComponent } from './chat/chat.component';
 import { TodosComponent } from './todos/todos.component';
+import { SearchComponent } from './search/search.component';
+import { StoreComponent } from './store/store.component';
 
 interface RouteConfig {
   path: string;
@@ -30,6 +32,16 @@ const routes: RouteConfig[] = [
     path: 'chat',
     component: ChatComponent,
     label: 'Chat'
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
+    label: 'Search'
+  },
+  {
+    path: 'store',
+    component: StoreComponent,
+    label: 'Store'
   }
 ];
 

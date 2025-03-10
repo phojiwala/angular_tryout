@@ -6,11 +6,12 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms'
 import { CommonModule } from '@angular/common'
+import { ErrorMessageComponent } from '../shared/error-message/error-message.component'
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ErrorMessageComponent],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
 })
@@ -26,17 +27,29 @@ export class FormComponent {
   private initForm() {
     this.form = this.fb.group({
       id: new Date().valueOf(),
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      date: ['', Validators.required],
-      file: [''],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      date: ['', [Validators.required, this.futureDateValidator]],
+      file: ['', [Validators.required]],
       lang: ['', Validators.required],
       vehicles: this.fb.group({
         bike: [false],
         car: [false],
         boat: [false],
-      }),
+      }, { validator: this.atLeastOneVehicleValidator })
     })
+  }
+
+  private futureDateValidator(control: any) {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return selectedDate >= today ? null : { pastDate: true };
+  }
+
+  private atLeastOneVehicleValidator(group: FormGroup) {
+    const hasVehicle = Object.values(group.value).some(value => value === true);
+    return hasVehicle ? null : { noVehicle: true };
   }
 
   ngOnChanges(changes: any) {

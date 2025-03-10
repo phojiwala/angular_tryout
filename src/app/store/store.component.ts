@@ -20,7 +20,6 @@ export class StoreComponent implements OnInit {
     this.getProducts()
       .then((data) => {
         this.products = data
-        console.log(this.products)
       })
       .catch((error) => {
         console.error('Error fetching products:', error)

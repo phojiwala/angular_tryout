@@ -2,32 +2,45 @@
   <div class="grid grid-cols-2 gap-4">
     <div>
       <input class="input input-bordered w-full" formControlName="firstName" placeholder="First name" />
-      <span class="text-error text-xs" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
-        {{ getErrorMessage('firstName') }}
-      </span>
+      <app-error-message [control]="form.get('firstName')" controlName="First Name"></app-error-message>
     </div>
-    <input class="input input-bordered w-full" formControlName="lastName" placeholder="Last name" />
-    <input type="date" class="input input-bordered w-full" formControlName="date" placeholder="Date" />
-    <input type="file" class="file-input w-full" (change)="onFileChange($event)" placeholder="File" />
-  </div>
-  <div class="space-x-2">
-    <input type="radio" id="html" formControlName="lang" value="HTML" />
-    <label for="html">HTML</label>
-    <input type="radio" id="css" formControlName="lang" value="CSS" />
-    <label for="css">CSS</label>
-    <input type="radio" id="javascript" formControlName="lang" value="JavaScript" />
-    <label for="javascript">JavaScript</label>
-  </div>
-  <div formGroupName="vehicles">
-    <input type="checkbox" id="vehicle1" formControlName="bike" value="Bike" />
-    <label for="vehicle1"> I have a bike</label><br>
-    <input type="checkbox" id="vehicle2" formControlName="car" value="Car" />
-    <label for="vehicle2"> I have a car</label><br>
-    <input type="checkbox" id="vehicle3" formControlName="boat" value="Boat" />
-    <label for="vehicle3"> I have a boat</label><br><br>
-  </div>
-  <div class="space-x-2">
-    <button class="btn btn-primary" (click)="handleSubmit()">Submit</button>
-    <button class="btn btn-ghost" (click)="resetForm()">Clear</button>
+    <div>
+      <input class="input input-bordered w-full" formControlName="lastName" placeholder="Last name" />
+      <app-error-message [control]="form.get('lastName')" controlName="Last Name"></app-error-message>
+    </div>
+    <div>
+      <input type="date" class="input input-bordered w-full" formControlName="date" placeholder="Date" />
+      <app-error-message [control]="form.get('date')" controlName="Date"></app-error-message>
+    </div>
+    <div>
+      <input type="file" class="file-input w-full" (change)="onFileChange($event)" placeholder="File" />
+      <app-error-message [control]="form.get('file')" controlName="File"></app-error-message>
+    </div>
+    <div class="space-x-2">
+      <div>
+        <input type="radio" id="html" formControlName="lang" value="HTML" />
+        <label for="html">HTML</label>
+        <input type="radio" id="css" formControlName="lang" value="CSS" />
+        <label for="css">CSS</label>
+        <input type="radio" id="javascript" formControlName="lang" value="JavaScript" />
+        <label for="javascript">JavaScript</label>
+      </div>
+      <app-error-message [control]="form.get('lang')" controlName="Language"></app-error-message>
+    </div>
+    <div formGroupName="vehicles">
+      <div>
+        <input type="checkbox" id="vehicle1" formControlName="bike" value="Bike" />
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" formControlName="car" value="Car" />
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" formControlName="boat" value="Boat" />
+        <label for="vehicle3"> I have a boat</label><br>
+      </div>
+      <app-error-message [control]="form.get('vehicles')" controlName="Vehicles"></app-error-message>
+    </div>
+    <div class="space-x-2">
+      <button class="btn btn-primary" (click)="handleSubmit()">Submit</button>
+      <button class="btn btn-ghost" (click)="resetForm()">Clear</button>
+    </div>
   </div>
 </form>

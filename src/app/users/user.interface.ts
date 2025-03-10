@@ -1,10 +1,11 @@
 export interface User {
-  id: number;
   name: string;
-  email: string;
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-  };
+  url: string;
+}
+
+export interface PokemonResponse {
+  count: number;
+  next: string;
+  previous: string | null;
+  results: User[];
 }

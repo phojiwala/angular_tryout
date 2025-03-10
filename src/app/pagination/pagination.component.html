@@ -1,0 +1,11 @@
+<div class="join">
+  <button class="join-item btn" (click)="decrementPage()">«</button>
+  <!-- <div>
+    <button *ngFor="let page of pages" class="join-item btn btn-md" [class.btn-active]="currentPage === page"
+      (click)="setPage(page)">
+      {{page}}
+    </button>
+  </div> -->
+  <button class="join-item btn">Page {{currentPage}}</button>
+  <button class="join-item btn" (click)="incrementPage()">»</button>
+</div>

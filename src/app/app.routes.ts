@@ -5,6 +5,7 @@ import { ChatComponent } from './chat/chat.component';
 import { TodosComponent } from './todos/todos.component';
 import { SearchComponent } from './search/search.component';
 import { StoreComponent } from './store/store.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 
 interface RouteConfig {
   path: string;
@@ -42,6 +43,11 @@ const routes: RouteConfig[] = [
     path: 'store',
     component: StoreComponent,
     label: 'Store'
+  },
+  {
+    path: 'form-builder',
+    component: FormBuilderComponent,
+    label: 'Form Builder'
   }
 ];
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-error-message',
+  selector: 'error',
   template: `
     <span class="text-error text-xs" *ngIf="showError">
       {{ errorMessage }}

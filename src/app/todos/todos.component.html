@@ -5,6 +5,7 @@
         <tr>
           <th>First name</th>
           <th>Last name</th>
+          <th>Income</th>
           <th>Birthdate</th>
           <th>Language</th>
           <th>Has</th>
@@ -18,6 +19,9 @@
           </td>
           <td>
             {{ todo.lastName }}
+          </td>
+          <td>
+            {{ todo.income | rs }}
           </td>
           <td>{{ todo.date }}</td>
           <td>{{ todo.lang }}</td>

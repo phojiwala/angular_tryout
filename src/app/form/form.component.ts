@@ -29,27 +29,33 @@ export class FormComponent {
       id: new Date().valueOf(),
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
+      income: ['', [Validators.required, Validators.minLength(2)]],
       date: ['', [Validators.required, this.futureDateValidator]],
-      file: ['', [Validators.required]],
+      // file: ['', [Validators.required]],
       lang: ['', Validators.required],
-      vehicles: this.fb.group({
-        bike: [false],
-        car: [false],
-        boat: [false],
-      }, { validator: this.atLeastOneVehicleValidator })
+      vehicles: this.fb.group(
+        {
+          bike: [false],
+          car: [false],
+          boat: [false],
+        },
+        { validator: this.atLeastOneVehicleValidator }
+      ),
     })
   }
 
   private futureDateValidator(control: any) {
-    const selectedDate = new Date(control.value);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return selectedDate >= today ? null : { pastDate: true };
+    const selectedDate = new Date(control.value)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    return selectedDate >= today ? null : { pastDate: true }
   }
 
   private atLeastOneVehicleValidator(group: FormGroup) {
-    const hasVehicle = Object.values(group.value).some(value => value === true);
-    return hasVehicle ? null : { noVehicle: true };
+    const hasVehicle = Object.values(group.value).some(
+      (value) => value === true
+    )
+    return hasVehicle ? null : { noVehicle: true }
   }
 
   ngOnChanges(changes: any) {
@@ -58,6 +64,7 @@ export class FormComponent {
         id: this.todoToEdit.id,
         firstName: this.todoToEdit.firstName,
         lastName: this.todoToEdit.lastName,
+        income: this.todoToEdit.income,
         date: this.todoToEdit.date,
         lang: this.todoToEdit.lang,
         vehicles: this.todoToEdit.vehicles,

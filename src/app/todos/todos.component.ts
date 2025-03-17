@@ -2,11 +2,12 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { FormComponent } from '../form/form.component';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
+import { IndianCurrencyPipe } from '../shared/pipes/indian-currency.pipe';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [FormComponent, CommonModule],
+  imports: [FormComponent, CommonModule, IndianCurrencyPipe],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css',
 })

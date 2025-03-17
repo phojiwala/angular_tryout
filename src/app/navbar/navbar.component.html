@@ -1,62 +1,64 @@
-<nav class="navbar !mb-0 bg-base-100">
-  <div class="navbar-start gap-4">
-    <div class="dropdown">
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+<ng-container *ngIf="isAdmin$ | async">
+  <nav class="navbar !mb-0 bg-base-100">
+    <div class="navbar-start gap-4">
+      <div class="dropdown">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          <li *ngFor="let link of links">
+            <a class="nav-link text-black" [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+      <div tabindex="0" role="button">
+        <label for="my-drawer-2" class="btn btn-active btn-neutral drawer-button lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </label>
+      </div>
+      <div class="text-xl" routerLink="/">Logo</div>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1">
         <li *ngFor="let link of links">
-          <a class="nav-link text-black" [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
+          <a [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
         </li>
       </ul>
     </div>
-    <div tabindex="0" role="button">
-      <label for="my-drawer-2" class="btn btn-active btn-neutral drawer-button lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </label>
-    </div>
-    <div class="text-xl" routerLink="/">Logo</div>
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li *ngFor="let link of links">
-        <a [routerLink]="link.link" routerLinkActive="active">{{ link.label }}</a>
-      </li>
-    </ul>
-  </div>
-  <div class="navbar-end space-x-2 z-[9999999]">
-    <div class="drawer drawer-end">
-      <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content">
-        <label for="my-drawer-4" class="drawer-button relative">
-          <span class="mynaui--cart"></span>
-          <ng-container *ngIf="cartItems$ | async as items">
-            <div *ngIf="items.length !== 0" class="badge badge-primary badge-xs absolute top-[-14px] right-[-7px]">
-              {{items.length}}
-            </div>
-          </ng-container>
-        </label>
-      </div>
-      <div class="drawer-side">
-        <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="list bg-base-100 rounded-box shadow-md text-base-content min-h-full w-80 p-4 space-y-2">
-          <h2 class="py-4 tracking-wide text-2xl">Your cart</h2>
-          <ng-container *ngIf="cartItems$ | async as items">
-            <li class="list-row bg-slate-100" *ngFor="let item of items">
-              <img class="size-10 rounded-sm" src="{{item.image}}" />
-              <div>
-                <div>{{item.name}}</div>
-                <div class="text-xs uppercase font-semibold opacity-60">₹{{item.price}}</div>
+    <div class="navbar-end space-x-2 z-[9999999]">
+      <div class="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+          <label for="my-drawer-4" class="drawer-button relative">
+            <span class="mynaui--cart"></span>
+            <ng-container *ngIf="cartItems$ | async as items">
+              <div *ngIf="items.length !== 0" class="badge badge-primary badge-xs absolute top-[-14px] right-[-7px]">
+                {{items.length}}
               </div>
-              <button class="btn btn-square btn-ghost" (click)="removeFromCart(item.id)">
-                <span class="fluent--delete-16-filled"></span>
-              </button>
-            </li>
-            <li *ngIf="items.length === 0">No items in cart</li>
-          </ng-container>
-        </ul>
+            </ng-container>
+          </label>
+        </div>
+        <div class="drawer-side">
+          <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+          <ul class="list bg-base-100 rounded-box shadow-md text-base-content min-h-full w-80 p-4 space-y-2">
+            <h2 class="py-4 tracking-wide text-2xl">Your cart</h2>
+            <ng-container *ngIf="cartItems$ | async as items">
+              <li class="list-row bg-slate-100" *ngFor="let item of items">
+                <img class="size-10 rounded-sm" src="{{item.image}}" />
+                <div>
+                  <div>{{item.name}}</div>
+                  <div class="text-xs uppercase font-semibold opacity-60">₹{{item.price}}</div>
+                </div>
+                <button class="btn btn-square btn-ghost" (click)="removeFromCart(item.id)">
+                  <span class="fluent--delete-16-filled"></span>
+                </button>
+              </li>
+              <li *ngIf="items.length === 0">No items in cart</li>
+            </ng-container>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <span class="hugeicons--logout-square-02"></span>
-</nav>
+    <span class="hugeicons--logout-square-02" (click)="logout()"></span>
+  </nav>
+</ng-container>

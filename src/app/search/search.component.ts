@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { Component } from '@angular/core'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
@@ -10,7 +10,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   search = new FormControl('')
   searchResults: any[] = []
   isLoading = false
@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
   async apiCall(term: string) {
     const response = await fetch(
       `https://demo.dataverse.org/api/search?q=${term}`
-    )  
+    )
     return await response.json()
   }
 }

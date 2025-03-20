@@ -1,40 +1,58 @@
 <div class="container">
-  <div class="overflow-x-auto">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>First name</th>
-          <th>Last name</th>
-          <th>Income</th>
-          <th>Birthdate</th>
-          <th>Language</th>
-          <th>Has</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let todo of todos">
-          <td>
-            {{ todo.firstName }}
-          </td>
-          <td>
-            {{ todo.lastName }}
-          </td>
-          <td>
-            {{ todo.income | rs }}
-          </td>
-          <td>{{ todo.date }}</td>
-          <td>{{ todo.lang }}</td>
-          <td>{{ getTrueKeys(todo).join(', ') }}</td>
-          <th class="space-x-2">
-            <button class="btn btn-primary btn-xs" (click)="editData(todo.id)">Edit</button>
-            <button class="btn btn-warning btn-xs" (click)="deleteTodo(todo.id)">Delete</button>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <br>
-  <br>
-  <app-form [todoToEdit]="selectedTodo" (formSubmit)="addUpdateTodo($event)"></app-form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Income</th>
+        <th>Birthdate</th>
+        <th>Language</th>
+        <th>Has</th>
+        <th>
+          <button class="btn btn-primary btn-xs" (click)="openAddModal()">Add</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>
+          {{ todo.firstName }}
+        </td>
+        <td>
+          {{ todo.lastName }}
+        </td>
+        <td>
+          {{ todo.income | rs }}
+        </td>
+        <td>{{ todo.date }}</td>
+        <td>{{ todo.lang }}</td>
+        <td>{{ getTrueKeys(todo).join(', ') }}</td>
+        <th class="space-x-2">
+          <button class="btn btn-primary btn-xs" (click)="editData(todo.id)">Edit</button>
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" role="button" class="badge badge-warning m-1">
+              Delete
+            </div>
+            <div tabindex="0"
+              class="dropdown-content menu rounded-box z-[999999] shadow-sm flex justify-center items-center bg-slate-200 py-3 px-8 gap-1">
+              <p>Sure?</p>
+              <button class="btn btn-sm btn-error" (click)="deleteTodo(todo.id)">Yes</button>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <dialog #todosModal id="todos_modal" class="modal">
+    <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <h3 class="text-lg font-bold mb-5">{{ selectedTodo === null ? 'Add' : 'Edit' }}</h3>
+      <app-form [todoToEdit]="selectedTodo" (formSubmit)="addUpdateTodo($event)"></app-form>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
 </div>

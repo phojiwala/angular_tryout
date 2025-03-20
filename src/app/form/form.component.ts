@@ -59,16 +59,19 @@ export class FormComponent {
   }
 
   ngOnChanges(changes: any) {
-    if (changes['todoToEdit'] && this.todoToEdit) {
-      this.form.patchValue({
-        id: this.todoToEdit.id,
-        firstName: this.todoToEdit.firstName,
-        lastName: this.todoToEdit.lastName,
-        income: this.todoToEdit.income,
-        date: this.todoToEdit.date,
-        lang: this.todoToEdit.lang,
-        vehicles: this.todoToEdit.vehicles,
-      })
+    if (changes['todoToEdit']) {
+      this.initForm();
+      if (this.todoToEdit) {
+        this.form.patchValue({
+          id: this.todoToEdit.id,
+          firstName: this.todoToEdit.firstName,
+          lastName: this.todoToEdit.lastName,
+          income: this.todoToEdit.income,
+          date: this.todoToEdit.date,
+          lang: this.todoToEdit.lang,
+          vehicles: this.todoToEdit.vehicles,
+        });
+      }
     }
   }
 

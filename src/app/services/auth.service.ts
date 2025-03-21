@@ -20,7 +20,7 @@ export class AuthService {
     const savedUser = this.storage?.getItem('currentUser');
     if (savedUser) {
       this.currentUserSubject.next(JSON.parse(savedUser));
-    }
+    } 
   }
 
   login(username: string, password: string): boolean {

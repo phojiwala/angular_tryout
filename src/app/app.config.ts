@@ -1,14 +1,8 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideClientHydration } from '@angular/platform-browser';
-import { routerConfig } from './app.routes';
+import { ApplicationConfig } from '@angular/core'
+import { provideClientHydration } from '@angular/platform-browser'
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routerConfig),
-    provideClientHydration()
-  ]
-};
+  providers: [provideClientHydration()],
+}
 
-// Re-export for use in app.config.server.ts
-export default appConfig;
+export default appConfig

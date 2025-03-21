@@ -31,7 +31,6 @@ export class UsersComponent implements OnInit {
   }
 
   onPageChange(event: any) {
-    console.log('Page changed:', event);
     this.offset = event.offset;
     this.fetchPokemon();
   }

@@ -1,9 +1,9 @@
-import { Component, ViewChild, TemplateRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccordionComponent, AccordionItem } from '../accordion/accordion.component';
-import { MessagesComponent } from '../messages/messages.component';
 import { FormComponent } from '../form/form.component';
+import { MessagesComponent } from '../messages/messages.component';
 
 @Component({
   selector: 'app-chat',
@@ -18,7 +18,7 @@ import { FormComponent } from '../form/form.component';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements AfterViewInit {
+export class ChatComponent {
   @ViewChild('promptsContent') promptsContent!: TemplateRef<any>;
   @ViewChild('recentChatsContent') recentChatsContent!: TemplateRef<any>;
 

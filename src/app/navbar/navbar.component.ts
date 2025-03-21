@@ -25,7 +25,7 @@ export class NavbarComponent {
     private authService: AuthService,
     private router: Router
   ) {}
-     
+
   removeFromCart(itemId: number) {
     this.cartService.removeFromCart(itemId)
   }

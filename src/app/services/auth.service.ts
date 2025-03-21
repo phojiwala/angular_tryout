@@ -1,6 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface User {
   username: string;
